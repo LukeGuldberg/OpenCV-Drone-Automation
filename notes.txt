@@ -1,0 +1,5 @@
+goodfeaturestotrack func
+^^ try to implement, file only captures one frame so add it to webcam.cpp
+once working, weed out some points that do not hang around when the camera moves
+save points that still show after movement - research is goofeaturestotrack has a way of weeding out...
+look into storing points in a queue to keep x amount of points inside at once. maintain the size of how many points we save
