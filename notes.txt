@@ -3,3 +3,16 @@ goodfeaturestotrack func
 once working, weed out some points that do not hang around when the camera moves
 save points that still show after movement - research is goofeaturestotrack has a way of weeding out...
 look into storing points in a queue to keep x amount of points inside at once. maintain the size of how many points we save
+
+
+
+create a set from the vectors, this doesnt track duplicates 
+do good features
+then calcopticalflow
+create a set between p0 and p1
+save set for next loop iteration
+
+good_new becomes oldcorners
+do goodfeatures and then add that to oldcorners
+
+how do I a float2f < float2f
