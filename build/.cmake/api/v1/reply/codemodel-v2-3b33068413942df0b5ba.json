@@ -47,9 +47,9 @@
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "webcamsafe::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-webcamsafe-Debug-8e887e4a8fae250e4d9a.json",
-					"name" : "webcamsafe",
+					"id" : "webcamset::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-webcamset-Debug-268af8d21f9b8074aa6a.json",
+					"name" : "webcamset",
 					"projectIndex" : 0
 				}
 			]

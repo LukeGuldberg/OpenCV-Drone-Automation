@@ -459,7 +459,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/bin/cmake-gui.exe"
+			"value" : "C:/msys64/mingw64/bin/ccmake.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = C:\Users\lukeg\code\opencv-msys\build
 
 # The main recursive "all" target.
 all: CMakeFiles/webcam.dir/all
-all: CMakeFiles/webcamsafe.dir/all
+all: CMakeFiles/webcamset.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,7 +72,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/webcam.dir/clean
-clean: CMakeFiles/webcamsafe.dir/clean
+clean: CMakeFiles/webcamset.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -102,30 +102,30 @@ CMakeFiles/webcam.dir/clean:
 .PHONY : CMakeFiles/webcam.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/webcamsafe.dir
+# Target rules for target CMakeFiles/webcamset.dir
 
 # All Build rule for target.
-CMakeFiles/webcamsafe.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\lukeg\code\opencv-msys\build\CMakeFiles --progress-num=3,4 "Built target webcamsafe"
-.PHONY : CMakeFiles/webcamsafe.dir/all
+CMakeFiles/webcamset.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\lukeg\code\opencv-msys\build\CMakeFiles --progress-num=3,4 "Built target webcamset"
+.PHONY : CMakeFiles/webcamset.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/webcamsafe.dir/rule: cmake_check_build_system
+CMakeFiles/webcamset.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lukeg\code\opencv-msys\build\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/webcamsafe.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/webcamset.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lukeg\code\opencv-msys\build\CMakeFiles 0
-.PHONY : CMakeFiles/webcamsafe.dir/rule
+.PHONY : CMakeFiles/webcamset.dir/rule
 
 # Convenience name for target.
-webcamsafe: CMakeFiles/webcamsafe.dir/rule
-.PHONY : webcamsafe
+webcamset: CMakeFiles/webcamset.dir/rule
+.PHONY : webcamset
 
 # clean rule for target.
-CMakeFiles/webcamsafe.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/clean
-.PHONY : CMakeFiles/webcamsafe.dir/clean
+CMakeFiles/webcamset.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/clean
+.PHONY : CMakeFiles/webcamset.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

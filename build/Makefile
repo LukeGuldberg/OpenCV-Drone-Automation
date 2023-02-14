@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\lukeg\code\opencv-msys\build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	C:\msys64\mingw64\bin\ccmake.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -129,17 +129,17 @@ webcam/fast:
 .PHONY : webcam/fast
 
 #=============================================================================
-# Target rules for targets named webcamsafe
+# Target rules for targets named webcamset
 
 # Build rule for target.
-webcamsafe: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 webcamsafe
-.PHONY : webcamsafe
+webcamset: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 webcamset
+.PHONY : webcamset
 
 # fast build rule for target.
-webcamsafe/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/build
-.PHONY : webcamsafe/fast
+webcamset/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/build
+.PHONY : webcamset/fast
 
 webcam.obj: webcam.cpp.obj
 .PHONY : webcam.obj
@@ -165,29 +165,29 @@ webcam.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/webcam.cpp.s
 .PHONY : webcam.cpp.s
 
-webcamsafe.obj: webcamsafe.cpp.obj
-.PHONY : webcamsafe.obj
+webcamset.obj: webcamset.cpp.obj
+.PHONY : webcamset.obj
 
 # target to build an object file
-webcamsafe.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.obj
-.PHONY : webcamsafe.cpp.obj
+webcamset.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.obj
+.PHONY : webcamset.cpp.obj
 
-webcamsafe.i: webcamsafe.cpp.i
-.PHONY : webcamsafe.i
+webcamset.i: webcamset.cpp.i
+.PHONY : webcamset.i
 
 # target to preprocess a source file
-webcamsafe.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.i
-.PHONY : webcamsafe.cpp.i
+webcamset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.i
+.PHONY : webcamset.cpp.i
 
-webcamsafe.s: webcamsafe.cpp.s
-.PHONY : webcamsafe.s
+webcamset.s: webcamset.cpp.s
+.PHONY : webcamset.s
 
 # target to generate assembly for a file
-webcamsafe.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.s
-.PHONY : webcamsafe.cpp.s
+webcamset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.s
+.PHONY : webcamset.cpp.s
 
 # Help Target
 help:
@@ -198,13 +198,13 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... webcam
-	@echo ... webcamsafe
+	@echo ... webcamset
 	@echo ... webcam.obj
 	@echo ... webcam.i
 	@echo ... webcam.s
-	@echo ... webcamsafe.obj
-	@echo ... webcamsafe.i
-	@echo ... webcamsafe.s
+	@echo ... webcamset.obj
+	@echo ... webcamset.i
+	@echo ... webcamset.s
 .PHONY : help
 
 

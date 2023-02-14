@@ -4,7 +4,7 @@
 # compile CXX with C:/msys64/mingw64/bin/x86_64-w64-mingw32-g++.exe
 CXX_DEFINES = 
 
-CXX_INCLUDES = @CMakeFiles/test.dir/includes_CXX.rsp
+CXX_INCLUDES = @CMakeFiles/webcamset.dir/includes_CXX.rsp
 
 CXX_FLAGS = -g -std=c++17 -g -Wall -Wextra -pedantic
 

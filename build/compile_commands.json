@@ -6,7 +6,7 @@
 },
 {
   "directory": "C:/Users/lukeg/code/opencv-msys/build",
-  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/webcamsafe.dir/includes_CXX.rsp -g -std=c++17 -g -Wall -Wextra -pedantic -o CMakeFiles\\webcamsafe.dir\\webcamsafe.cpp.obj -c C:\\Users\\lukeg\\code\\opencv-msys\\webcamsafe.cpp",
-  "file": "C:/Users/lukeg/code/opencv-msys/webcamsafe.cpp"
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/webcamset.dir/includes_CXX.rsp -g -std=c++17 -g -Wall -Wextra -pedantic -o CMakeFiles\\webcamset.dir\\webcamset.cpp.obj -c C:\\Users\\lukeg\\code\\opencv-msys\\webcamset.cpp",
+  "file": "C:/Users/lukeg/code/opencv-msys/webcamset.cpp"
 }
 ]

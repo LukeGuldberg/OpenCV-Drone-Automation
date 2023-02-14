@@ -1,2 +1,2 @@
-# Empty dependencies file for calib.
+# Empty dependencies file for webcamset.
 # This may be replaced when dependencies are built.

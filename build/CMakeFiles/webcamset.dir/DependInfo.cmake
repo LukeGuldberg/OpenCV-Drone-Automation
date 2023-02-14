@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/lukeg/code/opencv-msys/camera_calibration.cpp" "CMakeFiles/calib.dir/camera_calibration.cpp.obj" "gcc" "CMakeFiles/calib.dir/camera_calibration.cpp.obj.d"
+  "C:/Users/lukeg/code/opencv-msys/webcamset.cpp" "CMakeFiles/webcamset.dir/webcamset.cpp.obj" "gcc" "CMakeFiles/webcamset.dir/webcamset.cpp.obj.d"
   )
 
 # Targets to which this target links.
