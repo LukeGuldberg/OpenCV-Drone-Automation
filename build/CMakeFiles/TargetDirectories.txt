@@ -1,3 +1,4 @@
 C:/Users/lukeg/code/opencv-msys/build/CMakeFiles/webcam.dir
+C:/Users/lukeg/code/opencv-msys/build/CMakeFiles/webcamsafe.dir
 C:/Users/lukeg/code/opencv-msys/build/CMakeFiles/edit_cache.dir
 C:/Users/lukeg/code/opencv-msys/build/CMakeFiles/rebuild_cache.dir

@@ -25,16 +25,87 @@ struct hash<cv::Point2f> {
     }
 };
 }  // namespace std
-std::set<cv::Point2f> convertToSet(std::vector<cv::Point2f> v);
+
+constexpr int maxCorners = 10;
+constexpr double qualityLevel = 0.01;
+constexpr double minDistance = 20.;
+constexpr int blockSize = 3;
+constexpr bool useHarrisDetector = false;
+constexpr double k = 0.04;
+
+std::vector<cv::Scalar> generate_random_colors();
+std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
+                                          std::vector<cv::Point2f> oldCorners,
+                                          std::vector<cv::Point2f> corners,
+                                          cv::Mat frame,
+                                          std::vector<cv::Scalar> colors);
 
 int main() {
     cv::VideoCapture capture{0};
     if (!capture.isOpened()) {
         std::cerr << "Unable to open capture stream\n";
-        return -1;
     }
 
     // generaterandomcolors()
+    std::vector<cv::Scalar> colors = generate_random_colors();
+    cv::Mat oldGray, oldFrame,
+        mask;  // used in calcopticalflow , last frames imgs
+    std::vector<cv::Point2f> oldCorners;  // corners for the last frame
+    std::hash<cv::Point2f> oldSet;
+
+    // Take first frame and find corners in it
+    capture >> oldFrame;
+    cvtColor(oldFrame, oldGray, cv::COLOR_BGR2GRAY);
+    goodFeaturesToTrack(oldGray, oldCorners, 100, 0.3, 7, cv::Mat(), 7, false,
+                        0.04);
+
+    while (true) {
+        std::vector<cv::Point2f> corners;  // corners for current frame
+        cv::Mat frame, grayMat;
+
+        if (!capture.read(frame)) {
+            std::cerr << "Read blank frame\n";
+            continue;
+        }
+
+        cv::cvtColor(frame, grayMat, cv::COLOR_BGR2GRAY);
+        cv::goodFeaturesToTrack(grayMat, corners, maxCorners, qualityLevel,
+                                minDistance, mask, blockSize, useHarrisDetector,
+                                k);
+
+        // ADD GOODFEATURES (CORNERS) TO SET
+        // for (int i = 0; i < corners.size(); ++i) {  // add good features
+        // to set
+        //     oldSet(corners[i]);
+        // }
+        // // PUT SET BACK INTO A VECTOR so it can be used in
+        // find_good_points() for (auto it = oldSet.begin(); it !=
+        // oldSet.end(); ++it) {
+        //     // oldcorners.push_back(it.value())
+        // }
+
+        // Calulating the optical flow - finding GOOD POINTS
+        std::vector<cv::Point2f> good_new = find_good_points(
+            oldGray, grayMat, oldCorners, corners, frame, colors);
+
+        std::hash<cv::Point2f> set;
+        for (int i = 0; i < good_new.size(); ++i) {  // add good_new to set
+            set(good_new[i]);
+            // this is the new x,y pairs that will be looked at next time
+            // in addition to the next call of goodfeaturestotrack()
+        }
+        cv::imshow("Tello", frame);
+        oldGray = grayMat.clone();
+        oldCorners = good_new;
+        oldSet = set;
+        // SAVE SET
+        if (cv::waitKey(1) == 27) {  // ESC
+            break;
+        }
+    }
+}
+
+std::vector<cv::Scalar> generate_random_colors() {
     std::vector<cv::Scalar> colors;
     cv::RNG rng;
     for (int i = 0; i < 100; i++) {
@@ -43,125 +114,34 @@ int main() {
         int b = rng.uniform(0, 256);
         colors.push_back(cv::Scalar(r, g, b));
     }
-
-    int maxCorners = 10;
-    double qualityLevel = 0.01;
-    double minDistance = 20.;
-    int blockSize = 3;
-    bool useHarrisDetector = false;
-    double k = 0.04;
-    cv::Mat mask;
-    std::queue<cv::Point2f> queue;
-    cv::Mat oldGray, oldFrame;  // used in calcopticalflow , last frames imgs
-    std::vector<cv::Point2f> oldCorners;  // corners for the last frame
-    std::set<cv::Point2f> points;
-    std::hash<cv::Point2f> set;
-
-    // Take first frame and find corners in it
-    capture >> oldFrame;
-    cvtColor(oldFrame, oldGray, cv::COLOR_BGR2GRAY);
-    goodFeaturesToTrack(oldGray, oldCorners, 100, 0.3, 7, cv::Mat(), 7, false,
-                        0.04);
-
-    // Create a mask image for drawing purposes
-    // Mat mask = Mat::zeros(oldFrame.size(), oldFrame.type());
-
-    while (true) {
-        std::vector<cv::Point2f> corners;  // corners for current frame
-        cv::Mat frame;
-        cv::Mat grayMat;  // current greyscale
-
-        if (!capture.read(frame)) {
-            std::cerr << "Read blank frame\n";
-            continue;
-        }
-
-        // greyscale
-
-        cv::cvtColor(frame, grayMat, cv::COLOR_BGR2GRAY);
-        cv::goodFeaturesToTrack(grayMat, corners, maxCorners, qualityLevel,
-                                minDistance, mask, blockSize, useHarrisDetector,
-                                k);
-        for (int i = 0; i < corners.size(); ++i) {
-            set(corners[i]);
-        }
-        // ADD GOODFEATURES (CORNERS) TO SET
-        // PUT SET BACK INTO A VECTOR
-
-        // for (size_t i = 0; i < corners.size(); i++) {  // draw circles
-        // cv::circle(greyMat, corners[i], 3, cv::Scalar(255.),
-        //            -1);  // circles on greyscale
-        // cv::circle(frame, corners[i], 3, cv::Scalar(255.),
-        //            -1);          // cirlces on BGR
-        // queue.push(corners[i]);  // store in queue
-        // }
-        // std::cout << queue.front() << "  ";
-        // queue.pop();
-        // while (!queue.empty()) {  // print queue
-        //     std::cout << std::setw(20) << queue.front() << "  ";
-        //     queue.pop();
-        // }
-        // std::cout << "\n";
-
-        // Calulating the optical flow - finding GOOD POINTS
-        std::vector<uchar> status;
-        std::vector<float> err;
-        cv::TermCriteria criteria = cv::TermCriteria(
-            (cv::TermCriteria::COUNT) + (cv::TermCriteria::EPS), 10, 0.03);
-        // USE THE SET/VECTOR THAT ADDED NEW GOODFEATURES
-        cv::calcOpticalFlowPyrLK(oldGray, grayMat, oldCorners, corners, status,
-                                 err, cv::Size(15, 15), 2, criteria);
-        // cv::calcOpticalFlowPyrLK(oldGray, grayMat, corners, #####newval,
-        // status,
-        //                          err, Size(15, 15), 2, criteria);
-        std::vector<cv::Point2f> good_new;
-        for (uint i = 0; i < oldCorners.size(); i++) {
-            // Select good points
-            if (status[i] == 1) {
-                good_new.push_back(corners[i]);
-                set(corners[i]);
-                // draw the tracks
-                line(mask, corners[i], oldCorners[i], colors[i], 2);
-                circle(frame, corners[i], 5, colors[i], -1);
-            }
-        }
-
-        // look up distortion/camera calibration
-        // implement FAST algorithm and find key points
-        // cv::drawKeypoints
-        // cv::Mat img;
-        // add(grayMat, mask, img);
-        cv::imshow("Tello", frame);
-        // cv::imshow("Tello_Grey", grayMat);
-        oldGray = grayMat.clone();
-        oldCorners = good_new;
-        // SAVE SET
-        if (cv::waitKey(1) == 27) {  // ESC
-            break;
-        }
-    }
+    return colors;
 }
 
-std::set<cv::Point2f> convertToSet(const std::vector<cv::Point2f> v) {
-    // Declaring the set
-    std::set<cv::Point2f> s;
-
-    // Traverse the Vector
-    // for (int i = 0; i < v.size(); i++) {
-    //     // Insert each element
-    //     // into the Set
-    //     s.insert(v[i]);
-    // }
-
-    // for (const auto x : v) {
-    //     // Insert each element
-    //     // into the Set
-    //     s.emplace(x);
-
-    // }
-
-    // std::set<cv::Point2f> s{v.begin(), v.end()};
-
-    // Return the resultant Set
-    return s;
+std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
+                                          std::vector<cv::Point2f> oldCorners,
+                                          std::vector<cv::Point2f> corners,
+                                          cv::Mat frame,
+                                          std::vector<cv::Scalar> colors) {
+    std::vector<uchar> status;
+    std::vector<float> err;
+    cv::Mat mask;
+    cv::TermCriteria criteria = cv::TermCriteria(
+        (cv::TermCriteria::COUNT) + (cv::TermCriteria::EPS), 10, 0.03);
+    // USE THE SET/VECTOR THAT ADDED NEW GOODFEATURES
+    cv::calcOpticalFlowPyrLK(oldGray, grayMat, oldCorners, corners, status, err,
+                             cv::Size(15, 15), 2, criteria);
+    // cv::calcOpticalFlowPyrLK(oldGray, grayMat, corners, #####newval,
+    // status,
+    //                          err, Size(15, 15), 2, criteria);
+    std::vector<cv::Point2f> good_new;
+    for (uint i = 0; i < oldCorners.size(); i++) {
+        // Select good points
+        if (status[i] == 1) {
+            good_new.push_back(corners[i]);
+            // draw the tracks
+            line(mask, corners[i], oldCorners[i], colors[i], 2);
+            circle(frame, corners[i], 5, colors[i], -1);
+        }
+    }
+    return good_new;
 }

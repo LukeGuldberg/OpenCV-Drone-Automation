@@ -128,6 +128,19 @@ webcam/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/build
 .PHONY : webcam/fast
 
+#=============================================================================
+# Target rules for targets named webcamsafe
+
+# Build rule for target.
+webcamsafe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 webcamsafe
+.PHONY : webcamsafe
+
+# fast build rule for target.
+webcamsafe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/build
+.PHONY : webcamsafe/fast
+
 webcam.obj: webcam.cpp.obj
 .PHONY : webcam.obj
 
@@ -152,6 +165,30 @@ webcam.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/webcam.cpp.s
 .PHONY : webcam.cpp.s
 
+webcamsafe.obj: webcamsafe.cpp.obj
+.PHONY : webcamsafe.obj
+
+# target to build an object file
+webcamsafe.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.obj
+.PHONY : webcamsafe.cpp.obj
+
+webcamsafe.i: webcamsafe.cpp.i
+.PHONY : webcamsafe.i
+
+# target to preprocess a source file
+webcamsafe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.i
+.PHONY : webcamsafe.cpp.i
+
+webcamsafe.s: webcamsafe.cpp.s
+.PHONY : webcamsafe.s
+
+# target to generate assembly for a file
+webcamsafe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamsafe.dir\build.make CMakeFiles/webcamsafe.dir/webcamsafe.cpp.s
+.PHONY : webcamsafe.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,9 +198,13 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... webcam
+	@echo ... webcamsafe
 	@echo ... webcam.obj
 	@echo ... webcam.i
 	@echo ... webcam.s
+	@echo ... webcamsafe.obj
+	@echo ... webcamsafe.i
+	@echo ... webcamsafe.s
 .PHONY : help
 
 

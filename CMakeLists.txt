@@ -10,6 +10,10 @@ add_executable(webcam webcam.cpp)
 target_include_directories(webcam PUBLIC ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(webcam PUBLIC ${OpenCV_LIBS})
 
+add_executable(webcamsafe webcamsafe.cpp)
+target_include_directories(webcamsafe PUBLIC ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(webcamsafe PUBLIC ${OpenCV_LIBS})
+
 # add_executable(test test.cpp)
 # target_include_directories(test PUBLIC ${OpenCV_INCLUDE_DIRS})
 # target_link_libraries(test PUBLIC ${OpenCV_LIBS})

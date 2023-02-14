@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "drone",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -41,6 +43,13 @@
 					"id" : "webcam::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-webcam-Debug-aaa696d254a4773e81a8.json",
 					"name" : "webcam",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "webcamsafe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-webcamsafe-Debug-8e887e4a8fae250e4d9a.json",
+					"name" : "webcamsafe",
 					"projectIndex" : 0
 				}
 			]
