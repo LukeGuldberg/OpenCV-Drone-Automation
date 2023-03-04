@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/webcam.dir/hashpoints.cpp.obj"
+  "CMakeFiles/webcam.dir/hashpoints.cpp.obj.d"
   "CMakeFiles/webcam.dir/webcam.cpp.obj"
   "CMakeFiles/webcam.dir/webcam.cpp.obj.d"
   "libwebcam.dll.a"

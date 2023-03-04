@@ -16,3 +16,7 @@ good_new becomes oldcorners
 do goodfeatures and then add that to oldcorners
 
 how do I a float2f < float2f
+
+add a class that implements a data structure that allows easy use for erasing points
+
+implement the updated hashtable, the hash function, and also use a set to reuse points from frame to frame. Set a maxnum and whenever status[] gets below around 20 (status being the points chosen from opticalflow), add 30 more good features to the set to put us back at 50 points

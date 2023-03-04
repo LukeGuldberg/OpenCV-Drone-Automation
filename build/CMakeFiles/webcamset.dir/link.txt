@@ -1,3 +1,0 @@
-C:\msys64\mingw64\bin\cmake.exe -E rm -f CMakeFiles\webcamset.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\webcamset.dir/objects.a @CMakeFiles\webcamset.dir\objects1
-C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe -g -Wl,--whole-archive CMakeFiles\webcamset.dir/objects.a -Wl,--no-whole-archive -o webcamset.exe -Wl,--out-implib,libwebcamset.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\webcamset.dir\linkLibs.rsp

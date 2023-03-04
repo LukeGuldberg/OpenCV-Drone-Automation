@@ -128,18 +128,29 @@ webcam/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/build
 .PHONY : webcam/fast
 
-#=============================================================================
-# Target rules for targets named webcamset
+hashpoints.obj: hashpoints.cpp.obj
+.PHONY : hashpoints.obj
 
-# Build rule for target.
-webcamset: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 webcamset
-.PHONY : webcamset
+# target to build an object file
+hashpoints.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.obj
+.PHONY : hashpoints.cpp.obj
 
-# fast build rule for target.
-webcamset/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/build
-.PHONY : webcamset/fast
+hashpoints.i: hashpoints.cpp.i
+.PHONY : hashpoints.i
+
+# target to preprocess a source file
+hashpoints.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.i
+.PHONY : hashpoints.cpp.i
+
+hashpoints.s: hashpoints.cpp.s
+.PHONY : hashpoints.s
+
+# target to generate assembly for a file
+hashpoints.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.s
+.PHONY : hashpoints.cpp.s
 
 webcam.obj: webcam.cpp.obj
 .PHONY : webcam.obj
@@ -165,30 +176,6 @@ webcam.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/webcam.cpp.s
 .PHONY : webcam.cpp.s
 
-webcamset.obj: webcamset.cpp.obj
-.PHONY : webcamset.obj
-
-# target to build an object file
-webcamset.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.obj
-.PHONY : webcamset.cpp.obj
-
-webcamset.i: webcamset.cpp.i
-.PHONY : webcamset.i
-
-# target to preprocess a source file
-webcamset.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.i
-.PHONY : webcamset.cpp.i
-
-webcamset.s: webcamset.cpp.s
-.PHONY : webcamset.s
-
-# target to generate assembly for a file
-webcamset.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcamset.dir\build.make CMakeFiles/webcamset.dir/webcamset.cpp.s
-.PHONY : webcamset.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -198,13 +185,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... webcam
-	@echo ... webcamset
+	@echo ... hashpoints.obj
+	@echo ... hashpoints.i
+	@echo ... hashpoints.s
 	@echo ... webcam.obj
 	@echo ... webcam.i
 	@echo ... webcam.s
-	@echo ... webcamset.obj
-	@echo ... webcamset.i
-	@echo ... webcamset.s
 .PHONY : help
 
 
