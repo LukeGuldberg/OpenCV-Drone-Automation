@@ -1,5 +1,6 @@
 #include <opencv2/core/types_c.h>
 
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <opencv2/core/types.hpp>
@@ -29,26 +30,32 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
                                           HashTable& table, bool& refresh);
 
 int main() {
-    cv::VideoCapture capture{0};
-    if (!capture.isOpened()) {
-        std::cerr << "Unable to open capture stream\n";
-    }
+    std::ofstream outfile("data.txt");
+
+    cv::Mat image1 =
+        cv::imread("C:/Users/lukeg/code/opencv-msys/images/img1.jpg");
+    cv::Mat image2 =
+        cv::imread("C:/Users/lukeg/code/opencv-msys/images/img2.jpg");
+    std::vector<cv::Mat> images = {image1, image2};
+
     std::vector<cv::Scalar> colors = generate_random_colors();
     HashTable table;
+
     cv::Mat oldGray, oldFrame, mask;
+    oldFrame = images.at(0);
+    cvtColor(oldFrame, oldGray, cv::COLOR_BGR2GRAY);
+
     bool refresh = true;
     std::vector<cv::Point2f> oldCorners;  // corners for current frame
-    capture >> oldFrame;
-    cvtColor(oldFrame, oldGray, cv::COLOR_BGR2GRAY);
+
+    int index = 1;
     while (true) {
         std::vector<cv::Point2f> corners;
         cv::Mat frame, grayMat;
+        frame = images.at(index).clone();
 
-        if (!capture.read(frame)) {
-            std::cerr << "Read blank frame\n";
-            continue;
-        }
         cv::cvtColor(frame, grayMat, cv::COLOR_BGR2GRAY);
+
         if (refresh) {
             refresh_points(mask, grayMat, corners,
                            oldCorners);  // change position of if statement
@@ -63,8 +70,19 @@ int main() {
         oldGray = grayMat.clone();  // save the previous frame
         oldCorners = good_new;      // save the previous set
         cv::imshow("Tello", frame);
+        cv::waitKey(0);
         if (cv::waitKey(1) == 27) {  // ESC
             break;
+        }
+        index = (index + 1) % images.size();
+
+        for (auto t : table.table) {
+            outfile << "key: (" << t.first.x << ", " << t.first.y
+                    << ")\tvalue:\n ";
+            for (auto y : t.second) {
+                outfile << "(" << y.x << ", " << y.y << ")->";
+            }
+            outfile << "\n";
         }
     }
 }
@@ -99,7 +117,6 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
     std::vector<cv::Point2f> corners;
     std::vector<uchar> status;
     std::vector<float> err;
-    cv::Mat mask;
     cv::TermCriteria criteria = cv::TermCriteria(
         (cv::TermCriteria::COUNT) + (cv::TermCriteria::EPS), 10, 0.03);
     // USE THE SET/VECTOR THAT ADDED NEW GOODFEATURES

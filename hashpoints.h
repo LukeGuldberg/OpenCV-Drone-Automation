@@ -45,7 +45,9 @@ public:
         return table[point];
     }
 
+    
+std::unordered_map<cv::Point2f, std::vector<cv::Point2f>> table;
 private:
-    std::unordered_map<cv::Point2f, std::vector<cv::Point2f>> table;
+    
     std::hash<cv::Point2f> hash;
 };

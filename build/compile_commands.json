@@ -8,5 +8,15 @@
   "directory": "C:/Users/lukeg/code/opencv-msys/build",
   "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/webcam.dir/includes_CXX.rsp -g -std=c++17 -g -Wall -Wextra -pedantic -o CMakeFiles\\webcam.dir\\hashpoints.cpp.obj -c C:\\Users\\lukeg\\code\\opencv-msys\\hashpoints.cpp",
   "file": "C:/Users/lukeg/code/opencv-msys/hashpoints.cpp"
+},
+{
+  "directory": "C:/Users/lukeg/code/opencv-msys/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -g -Wall -Wextra -pedantic -o CMakeFiles\\test.dir\\test.cpp.obj -c C:\\Users\\lukeg\\code\\opencv-msys\\test.cpp",
+  "file": "C:/Users/lukeg/code/opencv-msys/test.cpp"
+},
+{
+  "directory": "C:/Users/lukeg/code/opencv-msys/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -g -Wall -Wextra -pedantic -o CMakeFiles\\test.dir\\hashpoints.cpp.obj -c C:\\Users\\lukeg\\code\\opencv-msys\\hashpoints.cpp",
+  "file": "C:/Users/lukeg/code/opencv-msys/hashpoints.cpp"
 }
 ]

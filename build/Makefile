@@ -128,12 +128,26 @@ webcam/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/build
 .PHONY : webcam/fast
 
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
 hashpoints.obj: hashpoints.cpp.obj
 .PHONY : hashpoints.obj
 
 # target to build an object file
 hashpoints.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/hashpoints.cpp.obj
 .PHONY : hashpoints.cpp.obj
 
 hashpoints.i: hashpoints.cpp.i
@@ -142,6 +156,7 @@ hashpoints.i: hashpoints.cpp.i
 # target to preprocess a source file
 hashpoints.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/hashpoints.cpp.i
 .PHONY : hashpoints.cpp.i
 
 hashpoints.s: hashpoints.cpp.s
@@ -150,7 +165,32 @@ hashpoints.s: hashpoints.cpp.s
 # target to generate assembly for a file
 hashpoints.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\webcam.dir\build.make CMakeFiles/webcam.dir/hashpoints.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/hashpoints.cpp.s
 .PHONY : hashpoints.cpp.s
+
+test.obj: test.cpp.obj
+.PHONY : test.obj
+
+# target to build an object file
+test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/test.cpp.obj
+.PHONY : test.cpp.obj
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 webcam.obj: webcam.cpp.obj
 .PHONY : webcam.obj
@@ -184,10 +224,14 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... test
 	@echo ... webcam
 	@echo ... hashpoints.obj
 	@echo ... hashpoints.i
 	@echo ... hashpoints.s
+	@echo ... test.obj
+	@echo ... test.i
+	@echo ... test.s
 	@echo ... webcam.obj
 	@echo ... webcam.i
 	@echo ... webcam.s
