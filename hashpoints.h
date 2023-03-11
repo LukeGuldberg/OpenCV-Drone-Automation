@@ -1,6 +1,7 @@
 #include <opencv2/core/types_c.h>
 
 #include <functional>
+#include <iostream>
 #include <opencv2/core/types.hpp>
 #include <unordered_map>
 namespace std {
@@ -27,6 +28,7 @@ public:
     // when a good-point disappears
     void erase(const cv::Point2f point) {
         table.erase(point);
+        std::cout << "Erased " << point << "\n";
     }
 
     // when the good-point moves
@@ -45,9 +47,8 @@ public:
         return table[point];
     }
 
-    
-std::unordered_map<cv::Point2f, std::vector<cv::Point2f>> table;
+    std::unordered_map<cv::Point2f, std::vector<cv::Point2f>> table;
+
 private:
-    
     std::hash<cv::Point2f> hash;
 };

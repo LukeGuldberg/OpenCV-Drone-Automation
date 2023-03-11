@@ -239,4 +239,5 @@ CMakeFiles/webcam.dir/hashpoints.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/bits/unique_lock.h \
  C:/msys64/mingw64/include/opencv4/opencv2/core/optim.hpp \
  C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp \
- C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h
+ C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h \
+ C:/msys64/mingw64/include/c++/12.2.0/iostream

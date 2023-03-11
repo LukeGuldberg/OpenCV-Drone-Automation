@@ -248,6 +248,7 @@ CMakeFiles/test.dir/hashpoints.cpp.obj
  C:/msys64/mingw64/include/opencv4/opencv2/core/optim.hpp
  C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp
  C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h
+ C:/msys64/mingw64/include/c++/12.2.0/iostream
 
 CMakeFiles/test.dir/test.cpp.obj
  C:/Users/lukeg/code/opencv-msys/test.cpp

@@ -1,5 +1,6 @@
 #include <opencv2/core/types_c.h>
 
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <opencv2/core/types.hpp>
@@ -27,8 +28,11 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
                                           cv::Mat frame,
                                           std::vector<cv::Scalar> colors,
                                           HashTable& table, bool& refresh);
+void print_table(std::ofstream& outfile, HashTable table);
 
 int main() {
+    std::ofstream outfile("data.txt");
+
     cv::VideoCapture capture{0};
     if (!capture.isOpened()) {
         std::cerr << "Unable to open capture stream\n";
@@ -66,6 +70,7 @@ int main() {
         if (cv::waitKey(1) == 27) {  // ESC
             break;
         }
+        print_table(outfile, table);
     }
 }
 
@@ -121,8 +126,9 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
                 table.insert(corners.at(i));
             }
         } else if (table.search(oldCorners.at(
-                       i))) {  // if good point goes away and it was previously
-                               // inserted to table, erase
+                       i))) {  // if good point goes away and it was
+                               // previously inserted to table, erase
+            std::cout << "status was false ";
             table.erase(oldCorners.at(i));
         }
     }
@@ -131,4 +137,15 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
         refresh = true;
     }
     return good_new;
+}
+
+void print_table(std::ofstream& outfile, HashTable table) {
+    outfile << "\nNEW FRAME";
+    for (auto t : table.table) {
+        outfile << "key: (" << t.first.x << ", " << t.first.y << ")\tvalue:\n ";
+        for (auto y : t.second) {
+            outfile << "(" << y.x << ", " << y.y << ")->";
+        }
+        outfile << "\n";
+    }
 }

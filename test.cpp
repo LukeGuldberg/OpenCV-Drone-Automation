@@ -28,6 +28,7 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
                                           cv::Mat frame,
                                           std::vector<cv::Scalar> colors,
                                           HashTable& table, bool& refresh);
+void print_table(HashTable table, std::ofstream& outfile);
 
 int main() {
     std::ofstream outfile("data.txt");
@@ -76,14 +77,7 @@ int main() {
         }
         index = (index + 1) % images.size();
 
-        for (auto t : table.table) {
-            outfile << "key: (" << t.first.x << ", " << t.first.y
-                    << ")\tvalue:\n ";
-            for (auto y : t.second) {
-                outfile << "(" << y.x << ", " << y.y << ")->";
-            }
-            outfile << "\n";
-        }
+        print_table(table, outfile);
     }
 }
 
@@ -115,17 +109,25 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
                                           std::vector<cv::Scalar> colors,
                                           HashTable& table, bool& refresh) {
     std::vector<cv::Point2f> corners;
+    std::vector<cv::Point2f> corners2;
+
     std::vector<uchar> status;
     std::vector<float> err;
     cv::TermCriteria criteria = cv::TermCriteria(
         (cv::TermCriteria::COUNT) + (cv::TermCriteria::EPS), 10, 0.03);
+
     // USE THE SET/VECTOR THAT ADDED NEW GOODFEATURES
     cv::calcOpticalFlowPyrLK(oldGray, grayMat, oldCorners, corners, status, err,
                              cv::Size(15, 15), 2, criteria);
+    // cv::calcOpticalFlowPyrLK(grayMat, oldGray, corners, corners2, status,
+    // err,
+    //                          cv::Size(15, 15), 2, criteria);
 
     std::vector<cv::Point2f> good_new;
     for (uint i = 0; i < oldCorners.size(); i++) {
         // Select good points
+        // float d = abs(oldCorners - corners2).reshape(-1, 2).max(-1);
+        // bool good = d < 1;
         if (status[i] == 1) {
             good_new.push_back(corners.at(i));
             // draw the tracks
@@ -137,9 +139,11 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
             } else {  // if it doesnt exist yet, just insert
                 table.insert(corners.at(i));
             }
-        } else if (table.search(oldCorners.at(
-                       i))) {  // if good point goes away and it was previously
-                               // inserted to table, erase
+            // } else if (table.search(oldCorners.at(
+            //                i))) {  // if good point goes away and it was
+            //                previously
+            //                        // inserted to table, erase
+        } else {
             table.erase(oldCorners.at(i));
         }
     }
@@ -148,4 +152,15 @@ std::vector<cv::Point2f> find_good_points(cv::Mat oldGray, cv::Mat grayMat,
         refresh = true;
     }
     return good_new;
+}
+
+void print_table(HashTable table, std::ofstream& outfile) {
+    outfile << "\nNEW FRAME!!!\n";
+    for (auto t : table.table) {
+        outfile << "key: (" << t.first.x << ", " << t.first.y << ")\tvalue:\n ";
+        for (auto y : t.second) {
+            outfile << "(" << y.x << ", " << y.y << ")->";
+        }
+        outfile << "\n";
+    }
 }

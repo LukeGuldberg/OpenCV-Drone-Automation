@@ -246,7 +246,8 @@ CMakeFiles/webcam.dir/hashpoints.cpp.obj: C:/Users/lukeg/code/opencv-msys/hashpo
   C:/msys64/mingw64/include/c++/12.2.0/bits/unique_lock.h \
   C:/msys64/mingw64/include/opencv4/opencv2/core/optim.hpp \
   C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp \
-  C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h
+  C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h \
+  C:/msys64/mingw64/include/c++/12.2.0/iostream
 
 CMakeFiles/webcam.dir/webcam.cpp.obj: C:/Users/lukeg/code/opencv-msys/webcam.cpp \
   C:/msys64/mingw64/include/opencv4/opencv2/core/types_c.h \
@@ -493,12 +494,16 @@ CMakeFiles/webcam.dir/webcam.cpp.obj: C:/Users/lukeg/code/opencv-msys/webcam.cpp
   C:/msys64/mingw64/include/opencv4/opencv2/core/optim.hpp \
   C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp \
   C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h \
+  C:/msys64/mingw64/include/c++/12.2.0/fstream \
+  C:/msys64/mingw64/include/c++/12.2.0/bits/codecvt.h \
+  C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+  C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h \
+  C:/msys64/mingw64/include/c++/12.2.0/bits/fstream.tcc \
   C:/msys64/mingw64/include/c++/12.2.0/iomanip \
   C:/msys64/mingw64/include/c++/12.2.0/locale \
   C:/msys64/mingw64/include/c++/12.2.0/bits/locale_facets_nonio.h \
   C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/time_members.h \
   C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/messages_members.h \
-  C:/msys64/mingw64/include/c++/12.2.0/bits/codecvt.h \
   C:/msys64/mingw64/include/c++/12.2.0/bits/locale_facets_nonio.tcc \
   C:/msys64/mingw64/include/c++/12.2.0/bits/locale_conv.h \
   C:/msys64/mingw64/include/c++/12.2.0/bits/quoted_string.h \
@@ -526,6 +531,12 @@ C:/msys64/mingw64/include/opencv4/opencv2/imgproc.hpp:
 C:/msys64/mingw64/include/opencv4/opencv2/imgcodecs.hpp:
 
 C:/msys64/mingw64/include/opencv4/opencv2/flann/miniflann.hpp:
+
+C:/msys64/mingw64/include/opencv4/opencv2/features2d.hpp:
+
+C:/msys64/mingw64/include/c++/12.2.0/bits/locale_conv.h:
+
+C:/msys64/mingw64/include/c++/12.2.0/bits/locale_facets_nonio.tcc:
 
 C:/msys64/mingw64/include/c++/12.2.0/ext/type_traits.h:
 
@@ -595,8 +606,6 @@ C:/msys64/mingw64/include/c++/12.2.0/cctype:
 
 C:/msys64/mingw64/include/opencv4/opencv2/core/cvstd.hpp:
 
-C:/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h:
-
 C:/msys64/mingw64/include/c++/12.2.0/bits/ostream_insert.h:
 
 C:/msys64/mingw64/include/c++/12.2.0/bits/exception.h:
@@ -604,6 +613,8 @@ C:/msys64/mingw64/include/c++/12.2.0/bits/exception.h:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/stddef.h:
 
 C:/msys64/mingw64/include/c++/12.2.0/bits/stl_construct.h:
+
+C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h:
 
 C:/msys64/mingw64/include/c++/12.2.0/bits/algorithmfwd.h:
 
@@ -651,6 +662,10 @@ C:/msys64/mingw64/include/c++/12.2.0/bits/move.h:
 
 C:/msys64/mingw64/include/time.h:
 
+C:/msys64/mingw64/include/c++/12.2.0/bits/quoted_string.h:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/bufferpool.hpp:
+
 C:/msys64/mingw64/include/c++/12.2.0/bits/std_function.h:
 
 C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/messages_members.h:
@@ -664,6 +679,10 @@ C:/msys64/mingw64/include/c++/12.2.0/new:
 C:/msys64/mingw64/include/c++/12.2.0/utility:
 
 C:/msys64/mingw64/include/c++/12.2.0/exception:
+
+C:/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h:
+
+C:/msys64/mingw64/include/c++/12.2.0/fstream:
 
 C:/msys64/mingw64/include/sdks/_mingw_ddk.h:
 
@@ -726,8 +745,6 @@ C:/msys64/mingw64/include/c++/12.2.0/debug/assertions.h:
 C:/msys64/mingw64/include/c++/12.2.0/bit:
 
 C:/msys64/mingw64/include/opencv4/opencv2/core/cvdef.h:
-
-C:/msys64/mingw64/include/c++/12.2.0/bits/locale_conv.h:
 
 C:/Users/lukeg/code/opencv-msys/hashpoints.cpp:
 
@@ -1037,16 +1054,12 @@ C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp:
 
 C:/Users/lukeg/code/opencv-msys/webcam.cpp:
 
+C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h:
+
+C:/msys64/mingw64/include/c++/12.2.0/bits/fstream.tcc:
+
 C:/msys64/mingw64/include/c++/12.2.0/locale:
 
 C:/msys64/mingw64/include/corecrt_stdio_config.h:
 
 C:/msys64/mingw64/include/c++/12.2.0/bits/locale_facets_nonio.h:
-
-C:/msys64/mingw64/include/c++/12.2.0/bits/locale_facets_nonio.tcc:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/bufferpool.hpp:
-
-C:/msys64/mingw64/include/c++/12.2.0/bits/quoted_string.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/features2d.hpp:
